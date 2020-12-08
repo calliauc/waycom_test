@@ -31,7 +31,7 @@ def process_text(split_text):
         counter_of_occur[word_to_count] = counter
     return counter_of_occur
 
-def sort_dict(counter_of_occur):
+def generate_sorted_list(counter_of_occur):
     """From the dictionary, return a list of tuples with the words and counters.
     Tuples are sorted by decreasing counters values"""
     return sorted(counter_of_occur.items(), key=lambda t: t[1], reverse=True)
@@ -46,7 +46,7 @@ def print_occurrences(counter_of_occur):
 def main():
     split_text = generate_text()
     counter_of_occur = process_text(split_text)
-    counter_of_occur = sort_dict(counter_of_occur)
+    counter_of_occur = generate_sorted_list(counter_of_occur)
     print_occurrences(counter_of_occur)
     exit(0)
 
