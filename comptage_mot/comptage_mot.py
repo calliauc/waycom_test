@@ -3,9 +3,14 @@
 
 import sys
 
-for line in sys.stdin:
-    print(f'{line}', end='')
+print(f"{30*'='}")
 
-print(f"hey")
+text = f""
+
+for line in sys.stdin:
+    text += line
+
+
+print(f"\n{text}")
 
 exit(0)
