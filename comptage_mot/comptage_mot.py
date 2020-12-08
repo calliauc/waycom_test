@@ -4,14 +4,14 @@
 import sys
 
 def generate_text():
-    """return a list of words based on the standard input capture"""
+    """return a list of words based on the standard input"""
     text = f""
     for line in sys.stdin:
         text += line
     return text.split()
 
 def search_other_occurence(word_to_count, split_text):
-    """If the word as more than one occurrence, each are found and removed from the list."""
+    """If the word has more than one occurrence, each are found and removed from the list."""
     counter = 1
     while word_to_count in split_text:
         for i, word in enumerate(split_text):
@@ -33,7 +33,7 @@ def process_text(split_text):
 
 def sort_dict(counter_dict):
     """From the dictionary, return a list of tuples with the words and counters.
-    Tuples are sorted by decreasing counters"""
+    Tuples are sorted by decreasing counters values"""
     return sorted(counter_dict.items(), key=lambda t: t[1], reverse=True)
 
 def print_dict(counter_dict):
