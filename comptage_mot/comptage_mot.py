@@ -4,13 +4,14 @@
 import sys
 
 def generate_text():
+    """return a list of words based on the standard input capture"""
     text = f""
     for line in sys.stdin:
         text += line
-
     return text.split()
 
 def search_other_occurence(word_to_count, split_text):
+    """If the word as more than one occurrence, each are found and removed from the list."""
     counter = 1
     while word_to_count in split_text:
         for i, word in enumerate(split_text):
@@ -20,6 +21,7 @@ def search_other_occurence(word_to_count, split_text):
     return counter
 
 def process_text(split_text):
+    """Remove the first word from the list and check any other occurrence"""
     counter_dict = dict()
     while len(split_text):
         word_to_count = split_text.pop(0)
@@ -30,11 +32,15 @@ def process_text(split_text):
     return counter_dict
 
 def sort_dict(counter_dict):
+    """From the dictionary, return a list of tuples with the words and counters.
+    Tuples are sorted by decreasing counters"""
     return sorted(counter_dict.items(), key=lambda t: t[1], reverse=True)
 
 def print_dict(counter_dict):
+    """Print on standard output words and their occurrences"""
     for line in counter_dict:
-        print(f"{line[1]} {line[0]}")
+        sys.stdout.writelines(f"{line[1]} {line[0]}\n")
+        # print(f"{line[1]} {line[0]}")
 
 
 def main():
@@ -44,11 +50,5 @@ def main():
     print_dict(counter_dict)
     exit(0)
 
+
 main()
-
-
-# Regarder le premier mot
-# Le supprimer
-# Chercher s'il est encore dans le tableau
-# Si oui, incrémenter et le supprimer
-# Si non ou absent, passer au mot suivant
