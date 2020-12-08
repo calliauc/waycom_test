@@ -10,17 +10,22 @@ def generate_text():
 
     return text.split()
 
+def search_other_occurence(word_to_count, split_text):
+    counter = 1
+    while word_to_count in split_text:
+        for i, word in enumerate(split_text):
+            if word == word_to_count:
+                counter += 1
+                split_text.pop(i)
+    return counter
+
 def process_text(split_text):
     counter_dict = dict()
     while len(split_text):
         word_to_count = split_text.pop(0)
         counter = 1
         if word_to_count in split_text:
-            while word_to_count in split_text:
-                for i, word in enumerate(split_text):
-                    if word == word_to_count:
-                        counter += 1
-                        split_text.pop(i)
+            counter = search_other_occurence(word_to_count, split_text)
         counter_dict[word_to_count] = counter
     return counter_dict
 
