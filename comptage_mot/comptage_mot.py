@@ -22,32 +22,32 @@ def search_other_occurence(word_to_count, split_text):
 
 def process_text(split_text):
     """Remove the first word from the list and check any other occurrence"""
-    counter_dict = dict()
+    counter_of_occur = dict()
     while len(split_text):
         word_to_count = split_text.pop(0)
         counter = 1
         if word_to_count in split_text:
             counter = search_other_occurence(word_to_count, split_text)
-        counter_dict[word_to_count] = counter
-    return counter_dict
+        counter_of_occur[word_to_count] = counter
+    return counter_of_occur
 
-def sort_dict(counter_dict):
+def sort_dict(counter_of_occur):
     """From the dictionary, return a list of tuples with the words and counters.
     Tuples are sorted by decreasing counters values"""
-    return sorted(counter_dict.items(), key=lambda t: t[1], reverse=True)
+    return sorted(counter_of_occur.items(), key=lambda t: t[1], reverse=True)
 
-def print_dict(counter_dict):
+def print_occurrences(counter_of_occur):
     """Print on standard output words and their occurrences"""
-    for line in counter_dict:
+    for line in counter_of_occur:
         sys.stdout.writelines(f"{line[1]} {line[0]}\n")
         # print(f"{line[1]} {line[0]}")
 
 
 def main():
     split_text = generate_text()
-    counter_dict = process_text(split_text)
-    counter_dict = sort_dict(counter_dict)
-    print_dict(counter_dict)
+    counter_of_occur = process_text(split_text)
+    counter_of_occur = sort_dict(counter_of_occur)
+    print_occurrences(counter_of_occur)
     exit(0)
 
 

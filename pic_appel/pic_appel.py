@@ -4,7 +4,7 @@
 import sys
 
 def generate_calls():
-    """return a list of calls based on the standard input"""
+    """return a list of timestamps based on the standard input"""
     calls = []
     for line in sys.stdin:
         call = []
@@ -22,3 +22,6 @@ def main():
 
 
 main()
+
+# Générer liste avec des int
+# 
