@@ -4,7 +4,7 @@
 import sys
 
 def generate_text():
-    """return a list of words based on the standard input"""
+    """return a list of words from the standard input"""
     text = f""
     for line in sys.stdin:
         text += line
@@ -37,7 +37,7 @@ def generate_sorted_list(counter_of_occur):
     return sorted(counter_of_occur.items(), key=lambda t: t[1], reverse=True)
 
 def print_occurrences(counter_of_occur):
-    """Print on standard output words and their occurrences"""
+    """Print words and their occurrences on standard output."""
     for line in counter_of_occur:
         sys.stdout.writelines(f"{line[1]} {line[0]}\n")
         # print(f"{line[1]} {line[0]}")
